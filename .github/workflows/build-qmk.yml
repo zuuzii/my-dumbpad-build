@@ -23,13 +23,14 @@ jobs:
           cd qmk_firmware
           python3 -m pip install -r requirements.txt
 
-      # 🧠 Copy keymap.c dan .json kamu
+      # 🧠 Copy keymap.c, .json, dan rules.mk kamu
       - name: Copy your keymap/config
         run: |
           cd qmk_firmware
           mkdir -p keyboards/dumbpad/v1x_oled/keymaps/mykeymap
           cp ../keymaps/mykeymap/keymap.c keyboards/dumbpad/v1x_oled/keymaps/mykeymap/keymap.c
           cp ../keymaps/mykeymap/dumbpad_v1x_oled_layout_2025-10-18.json keyboards/dumbpad/v1x_oled/keymaps/mykeymap/keymap.json
+          cp ../keymaps/mykeymap/rules.mk keyboards/dumbpad/v1x_oled/keymaps/mykeymap/rules.mk
 
       # ⚙️ Compile dari keymap.c (bukan .json)
       - name: Build firmware
