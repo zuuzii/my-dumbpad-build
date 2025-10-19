@@ -1,87 +1,44 @@
 {
-  "version": 1,
-  "notes": "",
-  "documentation": "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
-  "keyboard": "dumbpad/v1x_oled",
-  "keymap": "dumbpad_v1x_oled_layout_2025-10-18",
-  "layout": "LAYOUT",
-  "layers": [
-    [
-      "KC_1",
-      "KC_2",
-      "KC_I",
-      "KC_BSPC",
-      "KC_4",
-      "KC_LBRC",
-      "KC_RBRC",
-      "LCTL(KC_Z)",
-      "KC_1",
-      "KC_E",
-      "KC_T",
-      "KC_TAB",
-      "MS_UP",
-      "KC_NO",
-      "KC_3",
-      "KC_LEFT_SHIFT",
-      "KC_ENT"
+  "keyboard_name": "dumbpad_v1.2_4x4_encoder",
+  "url": "https://github.com/keebd/dumbpad",
+  "maintainer": "zuuzii",
+  "layouts": {
+    "LAYOUT": {
+      "layout": [
+        {"label":"K00", "x":0, "y":0},
+        {"label":"K01", "x":1, "y":0},
+        {"label":"K02", "x":2, "y":0},
+        {"label":"K03", "x":3, "y":0},
+        {"label":"K10", "x":0, "y":1},
+        {"label":"K11", "x":1, "y":1},
+        {"label":"K12", "x":2, "y":1},
+        {"label":"K13", "x":3, "y":1},
+        {"label":"K20", "x":0, "y":2},
+        {"label":"K21", "x":1, "y":2},
+        {"label":"K22", "x":2, "y":2},
+        {"label":"K23", "x":3, "y":2},
+        {"label":"K30", "x":0, "y":3},
+        {"label":"K31", "x":1, "y":3},
+        {"label":"K32", "x":2, "y":3},
+        {"label":"K33", "x":3, "y":3}
+      ]
+    }
+  },
+  "diode_direction": "COL2ROW",
+  "matrix_pins": {
+    "rows": ["D4", "C6", "D7", "E6"],
+    "cols": ["B4", "B5", "F6", "F7"]
+  },
+  "encoder": {
+    "rotary": [
+      {
+        "pin_a": "B1",
+        "pin_b": "B3",
+        "resolution": 4
+      }
     ],
-    [
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "QK_BOOT",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_PPLS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_PMNS",
-      "KC_NO",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_EQL"
-    ],
-    [
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS"
-    ],
-    [
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS"
-    ]
-  ],
-  "author": ""
+    "click_pin": "D2"
+  },
+  "processor": "atmega32u4",
+  "bootloader": "caterina"
 }
