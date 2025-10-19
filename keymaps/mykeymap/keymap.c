@@ -7,14 +7,32 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif
 
+// 🧩 Tambahkan custom keycode di sini
+enum custom_keycodes {
+    CTRL_SHIFT = SAFE_RANGE,  // key khusus untuk Ctrl + Shift
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        // tambahkan keycode khusus untuk tombol encoder click
+
+        // 🌀 Klik Rotary = Ctrl + S
         case KC_BTN1:  // jika tombol rotary terdaftar sebagai KC_BTN1
             if (record->event.pressed) {
                 tap_code16(LCTL(KC_S));  // tekan Ctrl+S
             }
-            return false; // jangan teruskan ke QMK
+            return false; // hentikan di sini (tidak diteruskan ke QMK)
+
+        // ⚡ Tombol khusus Ctrl + Shift bersamaan
+        case CTRL_SHIFT:
+            if (record->event.pressed) {
+                register_code(KC_LCTRL);
+                register_code(KC_LSFT);
+            } else {
+                unregister_code(KC_LCTRL);
+                unregister_code(KC_LSFT);
+            }
+            return false; // jangan kirim key lain
+
     }
     return true;
 }
