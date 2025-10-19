@@ -23,23 +23,24 @@ jobs:
           cd qmk_firmware
           python3 -m pip install -r requirements.txt
 
-      # 🧠 Salin file keymap.c kamu ke lokasi QMK
+      # 🧠 Copy keymap.c dan .json kamu
       - name: Copy your keymap/config
         run: |
           cd qmk_firmware
-          mkdir -p keyboards/dumbpad/v1x_oled/keymaps/default
-          cp ../keymaps/default/keymap.c keyboards/dumbpad/v1x_oled/keymaps/default/keymap.c
+          mkdir -p keyboards/dumbpad/v1x_oled/keymaps/mykeymap
+          cp ../keymaps/mykeymap/keymap.c keyboards/dumbpad/v1x_oled/keymaps/mykeymap/keymap.c
+          cp ../keymaps/mykeymap/dumbpad_v1x_oled_layout_2025-10-18.json keyboards/dumbpad/v1x_oled/keymaps/mykeymap/keymap.json
 
-      # ⚙️ Compile langsung dari keymap.c
+      # ⚙️ Compile dari keymap.c (bukan .json)
       - name: Build firmware
         run: |
           cd qmk_firmware
           python3 -m pip install qmk
           export PATH="$HOME/.local/bin:$PATH"
           qmk setup -y
-          qmk compile -kb dumbpad/v1x_oled -km default
+          qmk compile -kb dumbpad/v1x_oled -km mykeymap
 
-      # 💾 Upload hasil build (.hex)
+      # 💾 Upload hasil .hex
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
         with:
