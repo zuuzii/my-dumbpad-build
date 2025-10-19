@@ -32,6 +32,9 @@ jobs:
       - name: Build firmware
         run: |
           cd qmk_firmware
+          python3 -m pip install qmk
+          export PATH="$HOME/.local/bin:$PATH"
+          qmk setup -y
           qmk compile -kb dumbpad/v1x_oled -km mykeymap
 
       - name: Upload firmware artifact
