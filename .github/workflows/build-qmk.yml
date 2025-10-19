@@ -12,16 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build QMK firmware
-        uses: d3adb5/build-qmk-fw@v1
-        with:
-          keyboard: dumbpad/v1x_oled
-          keymap: mykeymap
-          local-keymap-path: .        # titik artinya folder ini (karena file kamu ada di root)
-          output-dir: qmk-output
+      - name: Install QMK
+        run: |
+          python3 -m pip install qmk
 
-      - name: Upload built firmware
+      - name: Build firmware from QMK Configurator JSON
+        run: |
+          qmk compile dumbpad_v1x_oled_layout_2025-10-18.json
+
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          name: qmk-built-images
-          path: qmk-output
+          name: qmk-firmware
+          path: "*.hex"
