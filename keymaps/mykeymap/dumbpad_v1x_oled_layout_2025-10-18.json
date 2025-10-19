@@ -21,8 +21,8 @@
       "KC_TAB",
       "MS_UP",
       "KC_NO",
-      "KC_3",
       "KC_LEFT_SHIFT",
+      "LCTL(LSFT(KC_NO))",
       "KC_ENT"
     ],
     [
