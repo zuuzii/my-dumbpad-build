@@ -1,51 +1,46 @@
+#include QMK_KEYBOARD_H
+
+// 🧩 Custom keycodes
+enum custom_keycodes {
+    CTRL_SHIFT = SAFE_RANGE,  // key khusus untuk Ctrl + Shift
+};
+
+// 🎛️ Keymap (4x4, 1 layer contoh)
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [0] = LAYOUT_4x4(
+        KC_1,     KC_2,      KC_3,      KC_4,
+        KC_Q,     KC_W,      KC_E,      KC_R,
+        KC_A,     KC_S,      KC_D,      KC_F,
+        KC_Z,     KC_X,      CTRL_SHIFT, KC_ENT
+    ),
+};
+
+// 🎚️ Encoder Map (jumlah layer harus sama dengan keymaps)
 #ifdef ENCODER_MAP_ENABLE
-// 🌀 Rotary encoder (putaran)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    // Layer 0 → Ctrl + - dan Ctrl + +
-    [0] = { ENCODER_CCW_CW(LCTL(KC_MINUS), LCTL(KC_EQUAL)) },
-    // Layer lain tetap transparan
-    [1] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [2] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [3] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [0] = { ENCODER_CCW_CW(LCTL(KC_MINUS), LCTL(KC_EQUAL)) } // Ctrl + - / +
 };
 #endif
 
-
-// 🧩 Custom keycode
-enum custom_keycodes {
-    CTRL_SHIFT = SAFE_RANGE,  // tombol khusus Ctrl + Shift bersamaan
-};
-
-
+// ⚙️ Custom behavior
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-            if (record->event.pressed) {
-                register_code(KC_LCTL);
-                register_code(KC_LSFT);
-            } else {
-                unregister_code(KC_LSFT);
-                unregister_code(KC_LCTL);
-            }
-            return false;
-        // 🌀 Klik Rotary → Ctrl + S
-        case MS_BTN1:  // gunakan MS_BTN1, bukan KC_BTN1
-            if (record->event.pressed) {
-                tap_code16(LCTL(KC_S));  // Tekan Ctrl+S saat rotary ditekan
-            }
-            return false; // hentikan, jangan diteruskan ke QMK default
-
-
-        // ⚡ Tombol khusus Ctrl + Shift bersamaan
         case CTRL_SHIFT:
             if (record->event.pressed) {
-                register_code(KC_LCTL);
+                register_code(KC_LCTRL);
                 register_code(KC_LSFT);
             } else {
+                unregister_code(KC_LCTRL);
                 unregister_code(KC_LSFT);
-                unregister_code(KC_LCTL);
             }
-            return false; // jangan kirim key lain
+            return false;
 
+        // Tambahan contoh tombol: Ctrl+S via rotary klik (jika ada tombol mouse)
+        case KC_BTN1:
+            if (record->event.pressed) {
+                tap_code16(LCTL(KC_S));
+            }
+            return false;
     }
     return true;
 }
