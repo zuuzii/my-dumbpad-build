@@ -19,7 +19,14 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(KC_LSFT);
+            } else {
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LCTL);
+            }
+            return false;
         // 🌀 Klik Rotary → Ctrl + S
         case MS_BTN1:  // gunakan MS_BTN1, bukan KC_BTN1
             if (record->event.pressed) {
