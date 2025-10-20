@@ -8,22 +8,22 @@
   "layers": [
     [
       "KC_1",
-      "KC_2",
+      "KC_RBRC",
       "KC_I",
-      "KC_BSPC",
+      "LCTL(KC_S)",
       "KC_4",
       "KC_LBRC",
-      "KC_RBRC",
-      "LCTL(KC_Z)",
-      "KC_1",
+      "KC_NO",
       "KC_E",
       "KC_T",
-      "KC_TAB",
-      "MS_UP",
       "KC_NO",
+      "LCTL(KC_EQUAL)",
+      "LCTL(KC_MINUS)",
+      "KC_I",
+      "KC_NO",
+      "KC_2",
       "KC_LEFT_SHIFT",
-      "KC_5",
-      "KC_ENT"
+      "LCTL(KC_Z)"
     ],
     [
       "KC_TRNS",
