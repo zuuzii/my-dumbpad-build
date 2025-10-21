@@ -7,23 +7,23 @@
   "layout": "LAYOUT",
   "layers": [
     [
-      "KC_1",
-      "KC_RBRC",
-      "KC_3",
-      "LCTL(KC_S)",
-      "KC_4",
-      "KC_LBRC",
-      "KC_E",
-      "KC_T",
-      "KC_NO",
-      "LCTL(KC_EQUAL)",
-      "LCTL(KC_MINUS)",
-      "KC_I",
-      "KC_NO",
-      "KC_NO",
-      "KC_2",
-      "KC_LEFT_SHIFT",
-      "LCTL(KC_Z)"
+      "KC_1", // TOMBOL KE 1
+      "KC_RBRC", //TOMBOL KE 2
+      "KC_3",  //TOMBOL KE 3
+      "LCTL(KC_S)", //TOMBOL KE 4
+      "KC_4",  //TOMBOL KE 5
+      "KC_LBRC",  //TOMBOL KE 6
+      "KC_E",  //TOMBOL KE 7
+      "KC_T",  //TOMBOL KE 8
+      "KC_NO",  //TOMBOL KE 9
+      "LCTL(KC_EQUAL)",  //TOMBOL KE 10
+      "LCTL(KC_MINUS)",  //TOMBOL KE 11
+      "KC_I",  //TOMBOL KE 12
+      "KC_NO",  // INI ENCODER NYA ATAU TOMBOL KE 13
+      "KC_NO",    //TOMBOL KE 14
+      "KC_LEFT_CTRL",  //TOMBOL KE 15
+      "KC_LEFT_SHIFT",  //TOMBOL KE 16
+      "LCTL(KC_Z)"  //TOMBOL KE 17
     ],
     [
       "KC_TRNS",
